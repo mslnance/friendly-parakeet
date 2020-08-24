@@ -28,8 +28,8 @@ Random Password Generator
 
 <a name="screenshots"></a>
 ## Screenshots
-![Screenshot](/assets/images/pwgen1.jpg?raw=true "Screenshot")
-![2nd Screenshot](/assets/images/pwgen2.jpg?raw=true "2nd Screenshot")
+![Screenshot](/assets/images/pwgen1.JPG?raw=true "Screenshot")
+![2nd Screenshot](/assets/images/pwgen2.JPG?raw=true "2nd Screenshot")
 
 <a name="ltda"></a>
 ## Link to deployed application
