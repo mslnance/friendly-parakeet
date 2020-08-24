@@ -40,12 +40,14 @@ var charTypes=function() {
   if (!pwValues) {
     window.alert("You need to provide at least one character type! Please try again.");
     charTypes();
+    
   }
 }
 
 var generatePassword=function() {
   //Starts criteria prompting
-  
+  pwValues = "";
+  password = "";
   var promptPwLength = window.prompt('Please choose a password length between 8 and 128 characters');
   //Checks if password length entered is between 8 and 128
   if (promptPwLength >= 8 && promptPwLength <= 128) {
