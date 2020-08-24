@@ -1,76 +1,71 @@
-// Assignment code here
-//WHEN I click the button to generate a password
-//THEN I am presented with a series of prompts for password criteria
-//WHEN prompted for password criteria
-//THEN I select which criteria to include in the password
-
-
-//WHEN I answer each prompt
-//THEN my input should be validated and at least one character type should be selected
-//WHEN all prompts are answered
-//THEN a password is generated that matches the selected criteria
-//WHEN the password is generated
-//THEN the password is either displayed in an alert or written to the page
-
-//WHEN prompted for character types to include in the password
-//THEN I choose lowercase, uppercase, numeric, and/or special characters
+//Inialize pwValue which is a global variable
 var pwValues = "";
+var password = "";
+//The function constructs the selected character types
 var charTypes=function() {
+  //include all possible letters
   var pwLtrValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  //include all possible number
   var pwNbrValues = "123456780";
+  //include all possible special characters
   var pwSymValues= "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   
+  //Prompt for uppercase letters
   var confirmUC = window.confirm("Should it include uppercase letters?");
   if (confirmUC) {
     pwValues = pwLtrValues;
-    console.log(pwValues);
   }
-  //pwValues = pwValues;
-
+  
+  //Prompt for lowercase letters
   var confirmLC = window.confirm("Should it include lowercase letters?");
   if (confirmLC) {
+    //make letters lowercase
     pwValues = pwValues + pwLtrValues.toLowerCase();
-    console.log(pwValues);
   }  
-  //pwValues = pwValues;
-
+  
+  //Prompt for numbers
   var confirmNbr = window.confirm("Should it include numbers?");
   if (confirmNbr) {
     pwValues = pwValues + pwNbrValues;
-    console.log(pwValues);
   }
-  //pwValues = pwValues;
-
+  
+  //Prompt for special characters
   var confirmSym = window.confirm("Should it include special characters?");
   if (confirmSym) {
     pwValues = pwValues + pwSymValues;
-    console.log(pwValues);
+    
   }
-  //pwValues = pwValues;
+  
+  //Validate and make sure at least one character type is selected
+  if (!pwValues) {
+    window.alert("You need to provide at least one character type! Please try again.");
+    charTypes();
+  }
 }
 
 var generatePassword=function() {
-
+  //Starts criteria prompting
   
-  //WHEN prompted for the length of the password
-  //THEN I choose a length of at least 8 characters and no more than 128 characters
-  var password = "";
   var promptPwLength = window.prompt('Please choose a password length between 8 and 128 characters');
+  //Checks if password length entered is between 8 and 128
   if (promptPwLength >= 8 && promptPwLength <= 128) {
+    
+    //The function constructs the selected character types
     charTypes();
-    console.log(pwValues);
+    
+    //Creates random password using selected criteria
     for(var i=0; i < promptPwLength; i++) {
         password = password + pwValues.charAt(Math.floor(Math.random() * Math.floor(pwValues.length - 1)));
-        
     }
-    console.log(password);
-     return password;
+    
+    return password;
+    
   }
+  //If password length entered is not between 8 and 128 or is null
   window.alert("That is not a valid choice! Please try again.");
-  generatePassword();
+  return generatePassword();
+
 }
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate") 
@@ -79,9 +74,7 @@ var generateBtn = document.querySelector("#generate")
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
