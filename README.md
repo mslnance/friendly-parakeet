@@ -33,4 +33,4 @@ Random Password Generator
 
 <a name="ltda"></a>
 ## Link to deployed application
-https://mslnance.github.io/mslnance.github.io-urban-octo-telegram/
+https://mslnance.github.io/mslnance.github.io-friendly-parakeet/
